@@ -25,7 +25,7 @@ class DB_CONNECT
 	return $db;
     }
 
-    //closes the open database connection. No parameter needs to be passed to pg_close because the method always closes the last open connecion
+    //closes the open database connection. No parameter needs to be passed to pg_close because the method always closes the last open connection
     function close()
     {
 	pg_close();
