@@ -1,10 +1,11 @@
 <?
 /*Database connection parameters*/
 
-define('DB_USER', 'db_beadmin');
-define('DB_PASSWORD', 'wholetthedogsout');
-define('DB_DATABASE', 'bookexchange');
-define('DB_SERVER', 'postgres.cs.wisc.edu');
-define('DB_PORT', '5432');
+global $DB_USER, $DB_PASSWORD, $DB_DATABASE, $DB_SERVER, $DB_PORT;
+$DB_USER = 'db_beadmin';
+$DB_PASSWORD = 'wholetthedogsout';
+$DB_DATABASE = 'bookexchange';
+$DB_SERVER = 'postgres.cs.wisc.edu';
+$DB_PORT = 5432;
 
 ?>

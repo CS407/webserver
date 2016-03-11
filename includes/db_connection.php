@@ -2,7 +2,8 @@
 <?php
 /*include db connect class */
 // connecting to db:
-$connection = new DB_CONNECT(); 
+$obj = new DB_CONNECT;
+$connection = $obj->connect(); 
 //make this global so we can use it in included function files
 
 //KAD REMOVE
