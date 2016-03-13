@@ -18,7 +18,7 @@ if (isset($_GET['submit'])) {
 	$email = $_GET["email"];
 	$password = $_GET["password"];
 	$phone = $_GET["phone"];
-	$zip = $_GET["zip"];
+	$zip = $_GET["zipcode"];
 	
 	/* 2b KAD TODO validate fields
 
