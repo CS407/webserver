@@ -10,15 +10,15 @@
 
 /*2. Process form*/
 
-if (isset($_GET['submit'])) { 
+if (isset($_POST['submit'])) { 
 
-	//TODO replace GET with POST
-	$name = $_GET["name"];
-	$username = $_GET["username"];
-	$email = $_GET["email"];
-	$password = $_GET["password"];
-	$phone = $_GET["phone"];
-	$zip = $_GET["zipcode"];
+	// Parse POST data
+	$name = $_POST["name"];
+	$username = $_POST["username"];
+	$email = $_POST["email"];
+	$password = $_POST["password"];
+	$phone = $_POST["phone"];
+	$zip = $_POST["zipcode"];
 	
 	/* 2b KAD TODO validate fields
 
@@ -28,25 +28,8 @@ if (isset($_GET['submit'])) {
 	 $query .= "(  username, password, name, email, phone, zipcode";  
 	 $query .= ") VALUES (";   
 	 $query .= "'{$username}', '{$password}', '{$name}', '{$email}', '{$phone}', '{$zip}' )";
-
-	// echo "Query: {$query}";//KAD test 
 	 
-	$result =  pg_query($connection, $query); //TODO this is not working
-		
-	/*
-	$queryResult =  pg_send_query($connection, $query);
-	$result = pg_get_result($connection);
-	if(!$connection){echo "connection is bad!!";}
-
-	echo "Result: "; echo var_dump($result);
-
-	if(!$result){
-	echo "Error:"; 
-	echo " 0. "; echo pg_result_error_field($queryResult);
-	echo " 1. "; echo pg_result_error_field($result);
-	echo " 2. "; echo pg_last_error($connection);
-	}
-	*/
+    $result =  pg_query($connection, $query); 
 
 	/* 4. Set up JSON response */
 	$response = array();
