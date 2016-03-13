@@ -11,7 +11,7 @@
 	/*2. Query db*/
 	 
 	$query  = "SELECT * ";
-	$query .= "FROM users";
+	$query .= "FROM users ";
 	//$query .= "ORDER BY ? ASC";
 	$all_users =  pg_query($connection, $query); 
 
@@ -19,7 +19,7 @@
 	$response = array();	
 	$response["users"] = array();
 	
-	if (!$all_users){ 
+	if (!$result){ 
 		// Failure		
 		$response["success"] = 0;
 		$response["message"] = "Oops! An error occurred: Failed to read all users.";
