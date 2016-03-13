@@ -19,7 +19,7 @@
 	$response = array();	
 	$response["users"] = array();
 	
-	if (!$result){ 
+	if (!$all_users){ 
 		// Failure		
 		$response["success"] = 0;
 		$response["message"] = "Oops! An error occurred: Failed to read all users.";
