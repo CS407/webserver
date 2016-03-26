@@ -10,9 +10,9 @@
 
 	/*2. Query db for specific username/password combo*/
 	
-	if(isset($_GET["username"])){
- 		$username = $_GET["username"];
-		$password = $_GET["password"]; 
+	if(isset($_POST["username"])){
+ 		$username = $_POST["username"];
+		$password = $_POST["password"]; 
 		 
 		$query  = "SELECT * ";
 		$query .= "FROM users ";
