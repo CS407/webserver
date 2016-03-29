@@ -13,12 +13,7 @@
 if (isset($_POST['submit'])) { 
 
 	// Get user to delete
-	$name = $_POST["name"];
-	$username = $_POST["username"];
-	$email = $_POST["email"];
-	$password = $_POST["password"];
-	$phone = $_POST["phone"];
-	$zip = $_POST["zipcode"];
+	
 	
 	/*2. Query db*/
 	
