@@ -25,7 +25,7 @@
  		$response = array();
 		$response["user"] = "";
 		
- 	 	if (!$result){ 
+ 	 	if (!$result || pg_num_rows($result) == 0){ 
 			// Failure		
 			$response["success"] = 0;
 			$response["message"] = "Oops! An error occurred: Failed to login.";

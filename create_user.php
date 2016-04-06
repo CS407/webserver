@@ -10,7 +10,9 @@
 
 /*2. Process form*/
 
-if (isset($_POST['submit'])) { 
+//if (isset($_POST['submit'])) { 
+if($_SERVER['REQUEST_METHOD'] == "POST")
+{
 
 	// Parse POST data
 	$name = $_POST["name"];
@@ -28,8 +30,8 @@ if (isset($_POST['submit'])) {
 	 $query .= "(  username, password, name, email, phone, zipcode";  
 	 $query .= ") VALUES (";   
 	 $query .= "'{$username}', '{$password}', '{$name}', '{$email}', '{$phone}', '{$zip}' )";
-	 
-    $result =  pg_query($connection, $query); 
+    
+	 $result =  pg_query($connection, $query); 
 
 	/* 4. Set up JSON response */
 	$response = array();
@@ -49,10 +51,18 @@ if (isset($_POST['submit'])) {
 		//$_SESSION["message"] = "Subject created.";
 
 		$response["success"] = 1;
-        $response["message"] = "User successfully created.";
+		$response["message"] = "User successfully created.";
+		
+		$sel_query = "SELECT * FROM users where username=";
+		$sel_query.= "'{$username}'";
+
+		$sel_result = pg_query($connection, $sel_query);
+
+		$user = pg_fetch_assoc($sel_result);
+		$response["user"] = $user;
 
 		//actually outputting JSON response
-        echo json_encode($response);
+	        echo json_encode($response);
 	}
 	
 	

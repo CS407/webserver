@@ -14,11 +14,12 @@
 	$courseno = $_POST["courseno"];
 	$edition = $_POST["edition"];
 	$price = $_POST["price"];
+	$userid = $_POST["userid"];
 	
 	$query = "INSERT INTO books";
-	$query.= "( title, authors, isbn, condition, comments, department, courseno, edition, price";
+	$query.= "( title, authors, isbn, condition, comments, department, courseno, edition, price, userid";
 	$query.= ") VALUES (";
-	$query.= "'{$title}', '{$authors}', '{$isbn}', '{$condition}', '{$comments}', '{$dept}', '{$courseno}', {$edition}, {$price} )";
+	$query.= "'{$title}', '{$authors}', '{$isbn}', '{$condition}', '{$comments}', '{$dept}', '{$courseno}', {$edition}, {$price}, '{$userid}' )";
 
 	$result = pg_query($connection, $query);
 	$response = array();
@@ -34,6 +35,9 @@
 	{
 	    $response["success"] = 1;
 	    $response["message"] = "Book successfully added.";
+
+	    $book = pg_fetch_assoc($result);
+	    $response["book"] = $book;
 
 	    echo json_encode($response);
 	}
