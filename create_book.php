@@ -36,8 +36,13 @@
 	    $response["success"] = 1;
 	    $response["message"] = "Book successfully added.";
 
-	    $book = pg_fetch_assoc($result);
-	    $response["book"] = $book;
+	    $sel_query = "SELECT * FROM books where isbn=";
+	    $sel_query.= "'{$isbn}'";
+
+	    $sel_result = pg_query($connection, $sel_query);
+
+	    $book = pg_fetch_assoc($sel_result);
+	    $response["books"] = $book;
 
 	    echo json_encode($response);
 	}
