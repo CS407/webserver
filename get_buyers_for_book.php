@@ -12,7 +12,7 @@
 
 	$result = pg_query($connection, $query);
 	$response = array();
-	$response["users"] = array();
+	$response["buyers"] = array();
 
 	if(!$result)
 	{
@@ -26,7 +26,7 @@
 
 	    while($user = pg_fetch_assoc($result))
 	    {
-		array_push($response["users"], $user);
+		array_push($response["buyers"], $user);
 	    }
 	}
 
