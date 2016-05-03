@@ -9,10 +9,10 @@
 	 * else mark interest (aka create row in buyers table)
 	 */
 	
-    if(!empty($_GET['userid']) && !empty($_GET['bookid']))
+    if(!empty($_POST['userid']) && !empty($_POST['bookid']))
     {
-		$userid = $_GET['userid'];
-		$bookid = $_GET['bookid'];
+		$userid = $_POST['userid'];
+		$bookid = $_POST['bookid'];
 
 		//See if there's a row in the buyers table already
 		$query = "SELECT * FROM buyers where userid={$userid} AND bookid={$bookid};";
