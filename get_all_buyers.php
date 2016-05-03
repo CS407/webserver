@@ -11,7 +11,7 @@
 	/*2. Query db*/
 	 
 	$query  = "SELECT * ";
-	$query .= "FROM users ";
+	$query .= "FROM buyers ";
 	//$query .= "ORDER BY ? ASC";
 	$all_users =  pg_query($connection, $query); 
 
