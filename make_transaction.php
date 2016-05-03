@@ -35,7 +35,7 @@
 		$subquery.= "WHERE userid='{$userid}'";
 		$subresult = pg_query($connection, $subquery);
 		$user = pg_fetch_assoc($subresult);
-		$sellerdata = "title:" . $book["title"] . ",authors:" . $book["authors"] . ",price:" . $book["price"] . ",email:" . $user["email"] . ",phone:" . $user["phone"];
+		$sellerdata = "title:" . $book["title"] . ",name:" . $user["name"] . ",price:" . $book["price"] . ",email:" . $user["email"] . ",phone:" . $user["phone"];
 
 		$query = "INSERT INTO notifs";
 		$query.= "(userid, notifdata) VALUES (";
