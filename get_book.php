@@ -16,22 +16,22 @@ Given any combination of title, isbn, and department, return all books that matc
 	/*1. Connect to the database (see includes/db_connection.php)*/
 
 	/*2. Parse parameters*/
-	if(isset($_GET['isbn']) || isset($_GET['title']) || isset($_GET['department'])){
+	if(isset($_POST['isbn']) || isset($_POST['title']) || isset($_POST['department'])){
 	
 	/*3. Query db*/
 	$query  = "SELECT * ";
 	$query .= "FROM books ";
 	
 	//if given isbn, just use that (it's unique)
-	if(!empty($_GET['isbn'])){
-	$isbn = $_GET['isbn'];
+	if(!empty($_POST['isbn'])){
+	$isbn = $_POST['isbn'];
 	$query .= "WHERE isbn = '{$isbn}' ";
 	}
 	
 	//if given title, look for some combination of the words TODO
 	//look for an exact match 
-	else if(!empty($_GET['title'])){
-	$title = $_GET['title'];
+	else if(!empty($_POST['title'])){
+	$title = $_POST['title'];
 	$lowTitle = strtolower($title);
 	$capTitle = ucwords($lowTitle);
 	$query .= "WHERE title LIKE '%{$lowTitle}%' ";
@@ -39,13 +39,13 @@ Given any combination of title, isbn, and department, return all books that matc
 	}
 	
 	//if given department, return all books listed for that department
-	else if(!empty($_GET['department']) && strcmp($_GET['department'], "ANY DEPT") != 0){
-	$dept = $_GET['department'];
+	else if(!empty($_POST['department']) && strcmp($_POST['department'], "ANY DEPT") != 0){
+	$dept = $_POST['department'];
 	$query .= "WHERE department = '{$dept}' ";
 	
 	//narrow by title if possible
-	if(!empty($_GET['title'])){
-	$title = $_GET['title'];
+	if(!empty($_POST['title'])){
+	$title = $_POST['title'];
 		$lowTitle = strtolower($title);
 	$capTitle = ucwords($lowTitle);
 	$query .= "AND title LIKE '%{$lowTitle}%' ";
