@@ -35,6 +35,9 @@
 				$result = pg_query($connection, $query);
 				if($result){			
 					$response["success"] = 1;
+					$response['interest'] = 1;
+					$response['userid'] = $userid;
+					$response['bookid'] = $bookid;
 					$response["message"] = "Successfully marked user {$userid} interested in book {$bookid}";	
 				}
 				else{
@@ -49,6 +52,9 @@
 				
 				if($result){			
 					$response["success"] = 1;
+					$response['userid'] = $userid;
+					$response['bookid'] = $bookid;
+					$response['interest'] = 0;
 					$response["message"] = "Successfully marked user {$userid} NOT interested in book {$bookid}";	
 				}
 				else{
